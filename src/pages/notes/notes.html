@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Page1</ion-title>
+  </ion-navbar>
+  </ion-header>
+  <ion-content>
+<ion-list>
+    <ion-item *ngFor='let item of items'>
+        <h1 item-left>
+            1
+            </h1>
+        
+            <h2>{{item.time}}</h2>
+            <p>{{item.title}}</p>
+            <button ion-button outline item-right icon-left>
+      details
+    </button>
+        </ion-item>
+        
+</ion-list>
+
+</ion-content>
+<ion-footer>
+    <button ion-button (click)="addItem(new NoteItem('Mar 3 2017 10:25AM', 'help baby'))">
+  <ion-icon name="home"></ion-icon>
+  Left Icon
+</button>
+</ion-footer>
