@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
 import { NoteItem } from './noteitem';
 import { FootInfoPage } from '../footinfopage/footinfopage';
+import { PopOverMsg } from '../popovermsg/popovermsg';
+import { Component } from '@angular/core';
+import { PopoverController } from 'ionic-angular';
+
 
 @Component({
   templateUrl: 'notes.html',
@@ -8,7 +11,8 @@ import { FootInfoPage } from '../footinfopage/footinfopage';
 
 export class Notes {
     items : Array<NoteItem>;
-  constructor() {
+
+  constructor(private popoverCtrl: PopoverController) {
       this.items = [];
 
   }
@@ -17,4 +21,12 @@ export class Notes {
       this.items.push(event);
       console.log("Notes Component Add " + event);
   }
+  presentPopover(ev) {
+
+    let popover = this.popoverCtrl.create(PopOverMsg);
+
+    popover.present({
+      ev: ev
+    });
+  } 
 }
