@@ -8,12 +8,14 @@ import { NoteItem } from '../notes/noteitem';
 
 export class FootInfoPage {
     @Output()
-    textInput:EventEmitter<NoteItem> = new EventEmitter();
+    logTextInput:EventEmitter<NoteItem> = new EventEmitter();
 
     constructor() {
     }
 
     onTextInput(inputText:string) {
-        this.textInput.emit(new NoteItem(inputText, 'time'));
+        this.logTextInput.emit(new NoteItem(inputText, 'time'));
+        console.log("New input text: " + inputText);
+        
     }
 }

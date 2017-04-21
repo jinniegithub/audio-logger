@@ -15,5 +15,6 @@ export class Notes {
 
   addItem(event) {
       this.items.push(event);
+      console.log("Notes Component Add " + event);
   }
 }
