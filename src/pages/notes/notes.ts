@@ -12,7 +12,8 @@ export class Notes {
       this.items = [];
 
   }
-  addItem() {
-      this.items.push(new NoteItem('', ''));
+
+  addItem(event) {
+      this.items.push(event);
   }
 }

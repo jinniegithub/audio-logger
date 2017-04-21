@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-//import { Item } from 'ionic/ionic';
-
+import { Component, Output, EventEmitter } from '@angular/core';
+import { NoteItem } from '../notes/noteitem';
 
 @Component({
     selector: 'foot-info-page',
@@ -8,8 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class FootInfoPage {
+    @Output()
+    textInput:EventEmitter<NoteItem> = new EventEmitter();
 
-  constructor() {
+    constructor() {
+    }
 
-  }
+    onTextInput(inputText:string) {
+        this.textInput.emit(new NoteItem(inputText, 'time'));
+    }
 }
