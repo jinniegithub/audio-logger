@@ -1,16 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Page1</ion-title>
+    <ion-title>Log</ion-title>
   </ion-navbar>
   </ion-header>
   <ion-content>
 <ion-list>
     <ion-item *ngFor='let item of items'>
         <h1 item-left>
-            1
+            <!-- https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html -->
+            {{item.time | date:'HH:mm'}}
             </h1>
         
-            <h2>{{item.time}}</h2>
+            <h2>{{item.time | date:'jms'}}</h2>
             <p>{{item.title}}</p>
             <button ion-button outline item-right icon-left>
       details

@@ -2,7 +2,7 @@ import { NoteItemInfo } from './noteiteminfo';
 
 export class NoteItem {
     title:string; 
-    time:string;
+    time:number;
     /* TODO
     category:string;
     gps:string;
@@ -10,7 +10,7 @@ export class NoteItem {
     phote:string;
     meno:string;
     */
-    constructor(title:string, time:string) {
+    constructor(title:string, time:number) {
         this.title = title;
         this.time = time;
         

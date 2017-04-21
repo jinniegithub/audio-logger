@@ -14,7 +14,7 @@ export class FootInfoPage {
     }
 
     onTextInput(inputText:string) {
-        this.logTextInput.emit(new NoteItem(inputText, 'time'));
+        this.logTextInput.emit(new NoteItem(inputText, Date.now()));
         console.log("New input text: " + inputText);
         
     }
