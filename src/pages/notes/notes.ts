@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NoteItem } from './noteitem';
-
+import { FootInfoPage } from '../footinfopage/footinfopage';
 
 @Component({
-  templateUrl: 'notes.html'
+  templateUrl: 'notes.html',
 })
 
 export class Notes {
