@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Notes } from '../pages/notes/notes';
 import { FootInfoPage} from '../pages/footinfopage/footinfopage';
 import { PopOverMsg} from '../pages/popovermsg/popovermsg';
+import { LoginPage} from '../pages/loginpage/loginpage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Notes,
     FootInfoPage,
     PopOverMsg,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Notes,
     FootInfoPage,
     PopOverMsg,
+    LoginPage,
   ],
   providers: [
     StatusBar,
