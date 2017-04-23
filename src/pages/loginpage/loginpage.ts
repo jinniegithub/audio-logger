@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+import { Notes } from '../notes/notes';
+import { NotesPersistServer } from '../../providers/notes-persist-server';
+import { UserProfile } from './user-profile';
 
 declare var window: any;
 
@@ -8,12 +11,30 @@ declare var window: any;
 })
 
 export class LoginPage {
+	users : Array<UserProfile>;
 
-    public constructor(public navCtrl: NavController, private platform: Platform) {
-
+    public constructor(public navCtrl: NavController, private platform: Platform, private notesPersister:NotesPersistServer) {
+		// TODO: Get all users and let them pick one
+		//this.users = <Array<UserProfile>> 
+		this.users = [];
+		this.notesPersister.promiseToGetAllUsers().then((data)=> {
+			//console.log("All Docs " + JSON.stringify(data));
+			this.users = <Array<UserProfile>> data;
+		});
     }
 
-    public login() {
+	login(user:UserProfile) {
+		this.notesPersister.setUser(user);
+		this.notesPersister.initDatabase(user);
+		this.navCtrl.push(Notes);
+	}
+    // Nav to Note
+    loginWithFacebook() {
+		let user : UserProfile = new UserProfile('facebooktestToken', 'testMetaData');
+		this.login(user);
+    }
+
+    public facebooklogin() {
         this.platform.ready().then(() => {
             this.facebookLogin().then(success => {
                 alert(success.access_token);

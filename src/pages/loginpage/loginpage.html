@@ -3,7 +3,14 @@
         <ion-title>Oauth Project</ion-title>
     </ion-navbar>
 </ion-header>
- 
+
 <ion-content padding>
-    <button (click)="login()">Facebook Login</button>
+	<ion-list no-lines>
+		<button ion-item *ngFor="let user of users" (click)="login(user)">
+			{{ user._id }}
+		</button> 
+	</ion-list>
+
+	<button (click)="loginWithFacebook()">Facebook Login</button>
+
 </ion-content>

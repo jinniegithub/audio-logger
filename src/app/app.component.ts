@@ -11,7 +11,7 @@ import { Notes } from '../pages/notes/notes';
 })
 
 export class MyApp {
-  rootPage:any = Notes;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
