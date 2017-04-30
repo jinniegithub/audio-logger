@@ -1,14 +1,18 @@
-
 export class UserProfile {
 	_id : string;
     username : string;
     userid : string;
     hashToken : string;
     userImage : string;
-    metadata : any;
-	constructor(token:string, metadata:string) {
-		console.log("we got data token " + token + " and " + metadata);
-		this.hashToken = token;
-		this._id = this.hashToken;
+	remoteDbs : string;
+	password:string;
+	metadata:any;
+	constructor(metadata) {
+		this.metadata = metadata;
+		this.userid = metadata.user_id;
+		this.remoteDbs = metadata.userDBs.audiologger;
+		this.hashToken = metadata.token;
+		this.password = metadata.password;
+		this._id = this.userid;
 	}
 }

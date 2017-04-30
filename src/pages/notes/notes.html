@@ -1,9 +1,12 @@
 <ion-header>
     <ion-title>Log</ion-title>
+    <button ion-button (click)="logout()" outline item-right icon-left>
+        logout
+    </button>
 </ion-header>
 <ion-content>
 <ion-list>
-    <ion-item *ngFor='let item of items'>
+    <ion-item *ngFor='let item of (items | orderByTime) '>
         <h1 item-left>
             <!-- https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html -->
             {{item.time | date:'HH:mm'}}
