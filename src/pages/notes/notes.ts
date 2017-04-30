@@ -48,7 +48,9 @@ export class Notes {
 
     addItem(event) {
         this.items.push(event);
-        this.notePersister.addNoteItem(event);
+        this.notePersister.addNoteItem(event).then(data=>{
+            this.items = <Array<NoteItem>> data;
+        });
         console.log("Notes Component Add " + event);
         this.presentToast();
     }

@@ -28,6 +28,7 @@ export class LoginPage {
             //loader.dismiss();
             this.nav.setRoot(Notes);
             this.loader.dismiss();
+            this.existLogin = true;
         }
         else {
             console.log("Cannot login due to internet connection");
@@ -80,7 +81,6 @@ export class LoginPage {
             this.errorMessage = res.message;
             console.log(JSON.stringify(res));
         })
-        this.existLogin = true;
     }
 
     launchSignup(){

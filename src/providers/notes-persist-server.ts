@@ -64,12 +64,7 @@ export class NotesPersistServer {
 
         //TODO: async and retrieve results to noteitem
         // Sync never finish until it stop
-        return this.localDocumentDb.replicate.from(this.remoteDocumentDb).then(ret=>{
-            return this.localDocumentDb.replicate.to(this.remoteDocumentDb).then(ret=>{
-                console.log('One single shot sync finished...');
-                this.syncProgress = this.localDocumentDb.sync(this.remoteDocumentDb, options);
-            });
-        });
+        this.syncProgress = this.localDocumentDb.sync(this.remoteDocumentDb, options);
     }
 
     logout() {
@@ -141,20 +136,34 @@ export class NotesPersistServer {
     addNoteItem(note: NoteItem) {
         return this.databaseReady().then(ret=>{
             console.log("Get JSON Note " + JSON.stringify(note));
-            return this.localDocumentDb.post(note);
+            return this.localDocumentDb.post(note).then(ret=>{
+                return this.promiseToGetNoteItems();
+            });
         }).catch(err=>{
             console.log('Database not ready!');
         });
     }
 
+    // Retrieve from local database
+    getLocalNoteItems() {
+        return this.localDocumentDb.allDocs({
+            include_docs: true,
+            attachments: true,
+            descending: true
+        }).then((response) => {
+            return response.rows.map((x)=>{return x.doc;});;
+        });
+    }
+
     promiseToGetNoteItems() {
         return this.databaseReady().then(ret=>{
-            return this.localDocumentDb.allDocs({
-                include_docs: true,
-                attachments: true,
-                descending: true
-            }).then((response) => {
-                return response.rows.map((x)=>{return x.doc;});;
+            return this.localDocumentDb.replicate.from(this.remoteDocumentDb).then(ret=>{
+                return this.localDocumentDb.replicate.to(this.remoteDocumentDb).then(ret=>{
+                    return this.getLocalNoteItems();
+                });
+            }).catch(err=>{
+                console.log('Sync failed! But we can still get you to local offline version');
+                return this.getLocalNoteItems();
             });
         }).catch(err=>{
         });
