@@ -6,6 +6,7 @@ import { ToastController, NavController, LoadingController } from 'ionic-angular
 import { NotesPersistServer } from '../../providers/notes-persist-server';
 import { UserProfile } from '../loginpage/user-profile';
 import { LoginPage } from '../loginpage/loginpage';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 
 @Component({
@@ -14,11 +15,21 @@ import { LoginPage } from '../loginpage/loginpage';
 
 export class Notes {
     items : Array<NoteItem>;
+    isSpeechAvailable : boolean;
 
-  constructor(public nav: NavController, private toastCtrl: ToastController, private notePersister: NotesPersistServer, public loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, private speech: SpeechRecognition, private toastCtrl: ToastController, private notePersister: NotesPersistServer, public loadingCtrl: LoadingController) {
       this.items = [];
 	  this.loadPage();
+      this.isSpeechSupported();
   }
+    isSpeechSupported() {
+        this.isSpeechAvailable = false;
+        this.speech.isRecognitionAvailable().then(
+            (ret) => {
+                this.isSpeechAvailable = ret;
+            }
+        );
+    }
 
 	loadPage() {
 		this.notePersister.promiseToGetNoteItems().then((data)=>{

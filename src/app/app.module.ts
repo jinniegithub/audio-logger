@@ -16,6 +16,7 @@ import { LoginPage} from '../pages/loginpage/loginpage';
 import { SignupPage} from '../pages/signuppage/signuppage';
 import { NotesPersistServer } from '../providers/notes-persist-server';
 import { OrderByTime } from '../pipe/order-by-time';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,6 +57,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NotesPersistServer,
 	OrderByTime
