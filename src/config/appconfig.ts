@@ -4,7 +4,7 @@ export interface AppConfig {
 
 var config = {
   // An optional URL to API server, by default a current window location is used.
-  serverUrl: 'https://ec2-54-255-239-178.ap-southeast-1.compute.amazonaws.com:3000',
+  serverUrl: 'https://ec2-13-228-168-212.ap-southeast-1.compute.amazonaws.com:3000',
   // The base URL for the SuperLogin routes with leading and trailing slashes (defaults to '/auth/')
   baseUrl: '/auth/',
   // A list of API endpoints to automatically add the Authorization header to
