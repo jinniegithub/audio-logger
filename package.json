@@ -4,6 +4,8 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
+    "electron": "electron .",
+    "electron dist": "electron .",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
@@ -23,6 +25,7 @@
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
+    "electron": "^1.6.11",
     "ionic-angular": "3.5.0",
     "ionicons": "3.0.0",
     "pouchdb": "^6.2.0",
@@ -45,5 +48,6 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "audio-logger: An Ionic project"
+  "description": "audio-logger: An Ionic project",
+  "main": "electron.js"
 }
